@@ -1,0 +1,73 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+# Build (from the repository root, after building the firmware bundle):
+#   pio run -e EleksTube -e EleksTube_Gen2 -e SI_HAI -e PunkCyber
+#   python3 scripts/collect_firmware.py
+#   flatpak-builder --user --install --force-clean build-flatpak \
+#       packaging/flatpak/io.github.OesusDevelopmentStudios.TubeClock.yml
+#
+# See docs/building.md.
+id: io.github.OesusDevelopmentStudios.TubeClock
+runtime: org.kde.Platform
+runtime-version: '6.11'
+sdk: org.kde.Sdk
+command: tubeclock
+
+finish-args:
+  - --share=ipc
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --device=dri
+  # The clock is a USB serial device (/dev/ttyUSB*, /dev/ttyACM*); Flatpak has no
+  # narrower permission for serial ports.
+  - --device=all
+  # Talking to the clock over WiFi and finding it with mDNS (Avahi).
+  - --share=network
+  - --system-talk-name=org.freedesktop.Avahi
+  # Pairing keys are kept in the system keyring.
+  - --talk-name=org.freedesktop.secrets
+  - --talk-name=org.kde.kwalletd6
+  # Firmware backups.
+  - --filesystem=xdg-documents/TubeClock:create
+
+cleanup:
+  - /include
+  - /lib/cmake
+  - /lib/pkgconfig
+  - '*.a'
+
+modules:
+  - name: qtkeychain
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_WITH_QT6=ON
+      - -DBUILD_TEST_APPLICATION=OFF
+      - -DBUILD_TRANSLATIONS=OFF
+    sources:
+      - type: archive
+        url: https://github.com/frankosterfeld/qtkeychain/archive/refs/tags/0.15.0.tar.gz
+        sha256: f4254dc8f0933b06d90672d683eab08ef770acd8336e44dfa030ce041dc2ca22
+
+  # esptool talks to the ESP32 boot loader (GPL-2.0-or-later). Regenerate with
+  # scripts/gen_flatpak_python_deps.py.
+  - python3-esptool.json
+
+  - name: tubeclock
+    buildsystem: cmake-ninja
+    subdir: app
+    builddir: true
+    run-tests: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      # Relative to the repository root: output of scripts/collect_firmware.py
+      - -DTUBECLOCK_FIRMWARE_DIR=dist/firmware
+    sources:
+      - type: dir
+        path: ../..
+        skip:
+          - .pio
+          - build
+          - build-flatpak
+          - .flatpak-builder
+          - .git

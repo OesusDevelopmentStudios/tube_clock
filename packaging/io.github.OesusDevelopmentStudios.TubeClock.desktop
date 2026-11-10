@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Tube Clock
+GenericName=IPS Tube Clock Manager
+Comment=Set up, back up and control EleksTube style IPS tube clocks
+Exec=tubeclock
+Icon=io.github.OesusDevelopmentStudios.TubeClock
+Terminal=false
+Categories=Qt;KDE;Utility;
+Keywords=elekstube;nixie;ips;clock;esp32;firmware;
+StartupNotify=true

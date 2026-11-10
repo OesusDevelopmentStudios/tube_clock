@@ -1,40 +1,42 @@
-# Created by https://www.toptal.com/developers/gitignore/api/platformio,visualstudiocode
-# Edit at https://www.toptal.com/developers/gitignore?templates=platformio,visualstudiocode
+# Tube Clock - files that are generated or machine-specific.
+# Generated copies inside lib/modified_TFT_eSPI are covered by its own .gitignore.
 
-### PlatformIO ###
-.pioenvs
-.piolibdeps
-.clang_complete
-.gcc-flags.json
-.pio
+# ---- Firmware (PlatformIO) -------------------------------------------------------------
+.pio/
 
-### VisualStudioCode ###
+# ---- Desktop app (CMake, Qt Creator, clangd) --------------------------------------------
+/build/
+CMakeUserPresets.json
+compile_commands.json
+*.user
+*.user.*
+.qtcreator/
+.cache/
+
+# ---- Packaging ------------------------------------------------------------------------
+# Firmware bundle from scripts/collect_firmware.py (CI publishes it with each release).
+/dist/
+# flatpak-builder output, local repository and bundles.
+/build-flatpak/
+/.flatpak-builder/
+/repo/
+*.flatpak
+
+# ---- Python -----------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# ---- Editors and tools ------------------------------------------------------------------
+# VS Code: only the recommended extensions are shared.
 .vscode/*
-# .vscode/settings.json is a local preference (machine-specific paths) and stays ignored
-!.vscode/tasks.json
-#!.vscode/launch.json
 !.vscode/extensions.json
-!.vscode/*.code-snippets
+.idea/
+.history/
+*.swp
+*~
 
-### Local History for Visual Studio Code ###
-.history
-
-### Built Visual Studio Code Extensions ###
-*.vsix
-
-### VisualStudioCode Patch ###
-.ionide
-
-# Ignore Python bytecode files and cache directories.
-*.pyc
-__pycache__
-
-# End of https://www.toptal.com/developers/gitignore/api/platformio,visualstudiocode
-
-# Exclude personal settings for the project (wifi credentials, etc.).
-include/_USER_DEFINES.h
-
-# Ignore "act" files (GitHub Actions locally).
-.act_artifacts
-.actrc
-.act
+# ---- Operating systems ------------------------------------------------------------------
+.DS_Store
+Thumbs.db

@@ -1,0 +1,6 @@
+[flake8]
+max-line-length = 120
+exclude = .git,.pio,build,build-flatpak,.flatpak-builder,dist,lib/modified_TFT_eSPI
+# PlatformIO injects Import() and env into its build scripts.
+per-file-ignores =
+    scripts/script_*.py: F821
