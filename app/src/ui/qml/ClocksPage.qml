@@ -46,6 +46,8 @@ Kirigami.ScrollablePage {
             required property string model
             required property string firmware
             required property bool online
+            required property string address
+            required property bool checking
             width: ListView.view.width
             onClicked: page.openClock(clockDelegate.name, clockDelegate.host, clockDelegate.port)
             contentItem: RowLayout {
@@ -66,15 +68,25 @@ Kirigami.ScrollablePage {
                         elide: Text.ElideRight
                     }
                     QQC2.Label {
-                        text: [clockDelegate.host, clockDelegate.model, clockDelegate.firmware ? i18n("firmware %1", clockDelegate.firmware) : ""]
+                        text: [clockDelegate.model,
+                               clockDelegate.firmware ? i18n("firmware %1", clockDelegate.firmware) : ""]
                               .filter(s => s).join(" · ")
+                        visible: text !== ""
                         opacity: 0.7
                         Layout.fillWidth: true
                         elide: Text.ElideRight
                     }
                 }
+                QQC2.BusyIndicator {
+                    visible: clockDelegate.checking
+                    running: visible
+                    Layout.preferredWidth: Kirigami.Units.iconSizes.small
+                    Layout.preferredHeight: Kirigami.Units.iconSizes.small
+                }
                 QQC2.Label {
-                    text: clockDelegate.online ? i18n("Online") : i18n("Not found on the network")
+                    text: clockDelegate.checking ? i18n("Checking…")
+                        : clockDelegate.online ? (clockDelegate.address || i18n("Connected"))
+                        : i18n("Not connected")
                     color: clockDelegate.online ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.disabledTextColor
                 }
             }
