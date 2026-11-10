@@ -1,0 +1,79 @@
+{
+  "name": "python3-esptool",
+  "buildsystem": "simple",
+  "build-commands": [
+    "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} --no-build-isolation --no-deps \"esptool==5.2.0\" \"pyserial==3.5\" \"intelhex==2.3.0\" \"PyYAML==6.0.3\" \"reedsolo==1.7.0\" \"bitarray==3.12.3\" \"bitstring==4.3.1\" \"click==8.5.1\" \"rich-click==1.9.9\" \"rich==15.0.0\" \"markdown-it-py==4.2.0\" \"mdurl==0.1.2\" \"Pygments==2.21.0\" \"typing_extensions==4.15.0\""
+  ],
+  "sources": [
+    {
+      "type": "file",
+      "url": "https://files.pythonhosted.org/packages/77/25/7b50d81a66f600a60f23258fa134201e97e854271b478ca4e21e9f694355/esptool-5.2.0.tar.gz",
+      "sha256": "9c355b7d6331cc92979cc710ae5c41f59830d1ea29ec24c467c6005a092c06d6"
+    },
+    {
+      "type": "file",
+      "url": "https://files.pythonhosted.org/packages/07/bc/587a445451b253b285629263eb51c2d8e9bcea4fc97826266d186f96f558/pyserial-3.5-py2.py3-none-any.whl",
+      "sha256": "c4451db6ba391ca6ca299fb3ec7bae67a5c55dde170964c7a14ceefec02f2cf0"
+    },
+    {
+      "type": "file",
+      "url": "https://files.pythonhosted.org/packages/97/78/79461288da2b13ed0a13deb65c4ad1428acb674b95278fa9abf1cefe62a2/intelhex-2.3.0-py2.py3-none-any.whl",
+      "sha256": "87cc5225657524ec6361354be928adfd56bcf2a3dcc646c40f8f094c39c07db4"
+    },
+    {
+      "type": "file",
+      "url": "https://files.pythonhosted.org/packages/05/8e/961c0007c59b8dd7729d542c61a4d537767a59645b82a0b521206e1e25c2/pyyaml-6.0.3.tar.gz",
+      "sha256": "d76623373421df22fb4cf8817020cbb7ef15c725b9d5e45f17e189bfc384190f"
+    },
+    {
+      "type": "file",
+      "url": "https://files.pythonhosted.org/packages/09/19/1bb346c0e581557c88946d2bb979b2bee8992e72314cfb418b5440e383db/reedsolo-1.7.0-py3-none-any.whl",
+      "sha256": "2b6a3e402a1ee3e1eea3f932f81e6c0b7bbc615588074dca1dbbcdeb055002bd"
+    },
+    {
+      "type": "file",
+      "url": "https://files.pythonhosted.org/packages/a9/cc/aa09a20048dd650d9a36bd70c26b2688413066d65acc9f484f94b9929108/bitarray-3.12.3.tar.gz",
+      "sha256": "919e35a951c0a551631b94bf568f3f5e38d004e0c60866cb2ca51bd8c4778fec"
+    },
+    {
+      "type": "file",
+      "url": "https://files.pythonhosted.org/packages/75/2d/174566b533755ddf8efb32a5503af61c756a983de379f8ad3aed6a982d38/bitstring-4.3.1-py3-none-any.whl",
+      "sha256": "69d1587f0ac18dc7d93fc7e80d5f447161a33e57027e726dc18a0a8bacf1711a"
+    },
+    {
+      "type": "file",
+      "url": "https://files.pythonhosted.org/packages/31/7d/164b7ffc8624fe9efb4221bf9af485d5c1e41b9ae118045d2b6dc5457d8b/click-8.5.1-py3-none-any.whl",
+      "sha256": "8bb5376d2006950386f8c6427613334a2acadc5f559cb80e638d00b4df957e37"
+    },
+    {
+      "type": "file",
+      "url": "https://files.pythonhosted.org/packages/b5/51/b2b91aec091e86bc961e5164f00207d89f133cc82b5ddad541d2132ea819/rich_click-1.9.9-py3-none-any.whl",
+      "sha256": "365e7a9d0adb42e41ea832a0a12e02c44c079a26536dee688125eb9814f97274"
+    },
+    {
+      "type": "file",
+      "url": "https://files.pythonhosted.org/packages/82/3b/64d4899d73f91ba49a8c18a8ff3f0ea8f1c1d75481760df8c68ef5235bf5/rich-15.0.0-py3-none-any.whl",
+      "sha256": "33bd4ef74232fb73fe9279a257718407f169c09b78a87ad3d296f548e27de0bb"
+    },
+    {
+      "type": "file",
+      "url": "https://files.pythonhosted.org/packages/b3/81/4da04ced5a082363ecfa159c010d200ecbd959ae410c10c0264a38cac0f5/markdown_it_py-4.2.0-py3-none-any.whl",
+      "sha256": "9f7ebbcd14fe59494226453aed97c1070d83f8d24b6fc3a3bcf9a38092641c4a"
+    },
+    {
+      "type": "file",
+      "url": "https://files.pythonhosted.org/packages/b3/38/89ba8ad64ae25be8de66a6d463314cf1eb366222074cfda9ee839c56a4b4/mdurl-0.1.2-py3-none-any.whl",
+      "sha256": "84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8"
+    },
+    {
+      "type": "file",
+      "url": "https://files.pythonhosted.org/packages/71/46/17f022dd3e953bf20a04a028a21ec746d942f8d2af30fa0f124fa0e6a684/pygments-2.21.0-py3-none-any.whl",
+      "sha256": "2363c69b61c4a97c838da3b130dcd6468f4848992b21a82f2a63ec34377137d9"
+    },
+    {
+      "type": "file",
+      "url": "https://files.pythonhosted.org/packages/18/67/36e9267722cc04a6b9f15c7f3441c2363321a3ea07da7ae0c0707beb2a9c/typing_extensions-4.15.0-py3-none-any.whl",
+      "sha256": "f0fa19c6845758ab08074a0cfa8b7aecb71c999ca73d62883bc25cc018c4e548"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+# C/C++ formatting: Mozilla style, 120 columns.
+#   clang-format -i <files>   (see docs/building.md)
+BasedOnStyle: Mozilla
+ColumnLimit: 120

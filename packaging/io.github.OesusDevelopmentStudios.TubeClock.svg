@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: CC0-1.0 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3b4252"/>
+      <stop offset="1" stop-color="#1b1f27"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffb347" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#ff7b00" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect x="8" y="88" width="112" height="28" rx="6" fill="#4c3a2a"/>
+  <rect x="8" y="88" width="112" height="6" rx="3" fill="#6b5340"/>
+  <g>
+    <rect x="16" y="14" width="44" height="78" rx="12" fill="url(#glass)" stroke="#8fa1b3" stroke-width="2"/>
+    <ellipse cx="38" cy="54" rx="22" ry="30" fill="url(#glow)"/>
+    <text x="38" y="72" font-family="DejaVu Sans, sans-serif" font-size="46" font-weight="bold" text-anchor="middle" fill="#ffcf8a">1</text>
+  </g>
+  <g>
+    <rect x="68" y="14" width="44" height="78" rx="12" fill="url(#glass)" stroke="#8fa1b3" stroke-width="2"/>
+    <ellipse cx="90" cy="54" rx="22" ry="30" fill="url(#glow)"/>
+    <text x="90" y="72" font-family="DejaVu Sans, sans-serif" font-size="46" font-weight="bold" text-anchor="middle" fill="#ffcf8a">2</text>
+  </g>
+  <circle cx="24" cy="102" r="3" fill="#27c4ff"/>
+  <circle cx="104" cy="102" r="3" fill="#27c4ff"/>
+</svg>

@@ -1,0 +1,6 @@
+# Third-party code keeps its upstream formatting.
+lib/modified_TFT_eSPI/*
+app/3rdparty/*
+# Generated files (see docs/building.md).
+lib/clockcore/src/TzTable.cpp
+test/fixtures/png_fixtures.h

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: CC0-1.0 -->
+<component type="desktop-application">
+  <id>io.github.OesusDevelopmentStudios.TubeClock</id>
+  <name>Tube Clock</name>
+  <summary>Set up, back up and control IPS tube clocks</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <developer id="io.github.oesusdevelopmentstudios">
+    <name>Tube Clock contributors</name>
+  </developer>
+  <description>
+    <p>
+      Tube Clock installs a replacement firmware on EleksTube style IPS "nixie" tube clocks
+      (EleksTube, EleksTube Gen2, Si Hai, PunkCyber) and manages them afterwards.
+    </p>
+    <ul>
+      <li>Backs up the original firmware before anything is changed</li>
+      <li>Configures WiFi (DHCP or static IP), time zone with automatic summer time and a daily internet time sync</li>
+      <li>Converts your own pictures into image sets, with a different picture per tube if you like</li>
+      <li>Finds clocks on the local network, syncs them with the computer's time, changes settings and uploads image sets</li>
+    </ul>
+    <p>
+      Warning: flashing firmware can damage the clock. Use at your own risk.
+      The firmware is based on EleksTubeHAX by Mark Smith, Aljaz Ogrin, Martinius79 and contributors.
+    </p>
+  </description>
+  <launchable type="desktop-id">io.github.OesusDevelopmentStudios.TubeClock.desktop</launchable>
+  <url type="homepage">https://github.com/OesusDevelopmentStudios/tube_clock</url>
+  <url type="bugtracker">https://github.com/OesusDevelopmentStudios/tube_clock/issues</url>
+  <content_rating type="oars-1.1"/>
+  <requires>
+    <display_length compare="ge">360</display_length>
+  </requires>
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+  </supports>
+  <releases>
+    <release version="1.0.0" date="2026-11-10">
+      <description>
+        <p>First release: new firmware 2.0.0 for the EleksTube family and the desktop app.</p>
+      </description>
+    </release>
+  </releases>
+</component>

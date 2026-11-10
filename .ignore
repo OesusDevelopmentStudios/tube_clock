@@ -1,42 +1,35 @@
-# Context guard for AI coding agents and ripgrep-based tooling (file listing, search, @ mentions).
-# NOTE: This does NOT affect Git tracking. firmware/*.bin intentionally stays in the repository.
+# Keeps generated and binary content out of search tools and AI coding agents
+# (ripgrep, file listings). Does NOT affect Git tracking.
 
-# PlatformIO build state and library cache
+# Build output
 .pio/
-.pioenvs/
-.piolibdeps/
+build/
+build-flatpak/
+.flatpak-builder/
+repo/
+dist/
 
-# Vendored TFT_eSPI sample sketches (313 files, ~29 MB) - open only for example-related tasks
-lib/modified_TFT_eSPI/examples/
+# Third-party code (read only when a task is about it)
+app/3rdparty/
+lib/modified_TFT_eSPI/Fonts/
 
-# Graphic/animation source assets (~22 MB, binary)
+# Generated sources
+lib/clockcore/src/TzTable.cpp
+test/fixtures/png_fixtures.h
+
+# Clock face artwork and documentation media
 assets/
-
-# Large documentation media (docs/**/*.md, *.txt and *.url stay readable)
+data/
 docs/**/*.jpg
 docs/**/*.png
 docs/**/*.pdf
 docs/**/*.docx
 docs/**/*.xlsx
-docs/**/*.kicad_sch
 
-# Binary artifacts and media
+# Binary files
 *.bin
-*.exe
 *.bmp
-*.clk
 *.jpg
 *.jpeg
 *.png
-*.pdf
-
-# Machine-local values (COM port map, private paths) - keep them out of search results,
-# file listings and @ mentions. Read `.local/` explicitly only when a flash/monitor task needs it.
-# Agent rule/prompt files are deliberately NOT listed here: they are meant to be loaded by the
-# respective tool. Git-side protection for them lives in .git/info/exclude.
-.local/
-
-# Caches / generated editor state
-.vscode/c_cpp_properties.json
-__pycache__/
-*.pyc
+*.flatpak
