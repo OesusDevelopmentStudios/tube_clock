@@ -1,5 +1,9 @@
 # Tube Clock
 
+[![Build](https://github.com/OesusDevelopmentStudios/tube_clock/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/OesusDevelopmentStudios/tube_clock/actions/workflows/build.yml)
+[![Latest release](https://img.shields.io/github/v/release/OesusDevelopmentStudios/tube_clock)](https://github.com/OesusDevelopmentStudios/tube_clock/releases/latest)
+[![License: GPL-3.0](https://img.shields.io/github/license/OesusDevelopmentStudios/tube_clock)](LICENSE)
+
 Replacement firmware and a Linux desktop app for EleksTube style IPS "nixie" tube clocks.
 
 The desktop app (Qt 6 / KDE Kirigami, distributed as a Flatpak) does the following:
@@ -47,12 +51,16 @@ Details: [docs/clock-controls.md](docs/clock-controls.md).
 
 ## Install
 
-Install the Flatpak from the [releases page](https://github.com/OesusDevelopmentStudios/tube_clock/releases):
+Download `TubeClock.flatpak` from the [latest release](https://github.com/OesusDevelopmentStudios/tube_clock/releases/latest)
+and install it:
 
 ```bash
 flatpak install --user TubeClock.flatpak
 flatpak run io.github.OesusDevelopmentStudios.TubeClock
 ```
+
+The app uses the KDE runtime from Flathub; if it is not installed yet, Flatpak offers to install it. A newer
+release is installed the same way (`flatpak install --user --reinstall TubeClock.flatpak` if Flatpak refuses).
 
 Your user needs access to USB serial ports. On most distributions this means membership in the `dialout` group
 (`sudo usermod -aG dialout $USER`, then log out and back in).

@@ -37,7 +37,7 @@
     <control>keyboard</control>
   </supports>
   <releases>
-    <release version="1.0.0" date="2026-11-10">
+    <release version="1.0.0" date="2026-11-11">
       <description>
         <p>First release: new firmware 2.0.0 for the EleksTube family and the desktop app.</p>
       </description>

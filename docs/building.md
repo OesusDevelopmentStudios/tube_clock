@@ -125,8 +125,26 @@ bool requireAuth()
 ## CI
 
 [.github/workflows/build.yml](../.github/workflows/build.yml) runs the firmware unit tests, builds all models and the
-firmware bundle, builds the Flatpak (including the app tests) and, for `v*` tags, creates a GitHub release with
-the firmware bundle and the Flatpak bundle.
+firmware bundle, and builds the Flatpak (including the app tests). It runs for every push to `main` (including merged
+pull requests), for pull requests into `main`, for `v*` tags, and by hand from the Actions tab. The build status
+badge in the README shows the result for `main`. Every run keeps the firmware bundle and the Flatpak as downloadable
+artifacts of the run.
+
+## Releasing
+
+1. Update the version: `project(... VERSION x.y.z)` in `app/CMakeLists.txt` and a new `<release>` entry (with
+   short release notes) in `packaging/io.github.OesusDevelopmentStudios.TubeClock.metainfo.xml`. The firmware has
+   its own version (`BUILDVER` in `platformio.ini`); raise it when the firmware changed.
+2. Merge to `main` and wait for the build to pass.
+3. Tag the commit on `main` and push the tag:
+
+   ```bash
+   git tag -a vx.y.z -m "Tube Clock x.y.z"
+   git push origin vx.y.z
+   ```
+
+The tag build creates the GitHub release with `TubeClock.flatpak` and `tubeclock-firmware-vx.y.z.zip` attached and
+release notes generated from the merged pull requests.
 
 ## Generated files
 
