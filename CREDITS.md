@@ -21,7 +21,7 @@ EleksTubeHAX authors and contributors:
 
 From EleksTubeHAX, Tube Clock still uses or builds on:
 
-- the pin mappings and hardware knowledge of the supported clocks (`include/GLOBAL_DEFINES.h`)
+- the pin mappings and hardware knowledge of the supported clocks (`src/GLOBAL_DEFINES.hpp`)
 - the display chip select, button and backlight drivers (`src/ChipSelect.cpp`, `src/Buttons.cpp`, `src/Backlights.cpp`)
 - the patched TFT_eSPI copy (`lib/modified_TFT_eSPI`)
 - the bundled clock faces (`data/`, converted to PNG) and the artwork in `assets/`

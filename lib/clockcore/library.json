@@ -6,7 +6,7 @@
   "frameworks": "*",
   "platforms": "*",
   "build": {
-    "includeDir": "include",
+    "includeDir": "src",
     "srcDir": "src"
   },
   "dependencies": [

@@ -88,11 +88,39 @@ The app's tests run during the build. esptool and its Python dependencies are pi
 
 | Language | Rule | Config | Command |
 | --- | --- | --- | --- |
-| C / C++ | Mozilla style, 120 columns | [.clang-format](../.clang-format), [.clang-format-ignore](../.clang-format-ignore) | `clang-format -i <files>` |
+| C / C++ | Allman braces, 4-space indent, 120 columns (see below) | [.clang-format](../.clang-format), [.clang-format-ignore](../.clang-format-ignore) | `clang-format -i <files>` |
 | Python | flake8, 120 columns | [.flake8](../.flake8) | `flake8 scripts test/fixtures` |
 
 Third-party code (`lib/modified_TFT_eSPI`, `app/3rdparty`) and generated files are excluded.
 Both tools can be installed with `pip install clang-format flake8`.
+
+### C / C++ conventions
+
+- Headers use the `.hpp` extension and live next to their `.cpp` file. `lib/clockcore` keeps its files in
+  `lib/clockcore/src/clockcore/`, so they are included as `"clockcore/Config.hpp"` and do not clash with the app's
+  own headers (e.g. `ImageSet.hpp`).
+- Braces on their own line (Allman), also around single statements; only `case X: {` keeps the brace on the line.
+- 4 spaces indentation, case labels indented, `public:`/`private:` at the class's indentation.
+- Return type on the same line as the function name; only inline member functions may be one-liners.
+- Long conditions break before `&&`/`||` and continue one level deeper.
+
+Two rules are not covered by clang-format and are applied by hand:
+
+- a blank line after a closing `}` that is followed by more statements;
+- in a braced case block, `break;` goes inside the braces (clang-format would split `} break;` onto two lines).
+
+```cpp
+bool requireAuth()
+{
+    if (authorized())
+    {
+        return true;
+    }
+
+    sendError(401, "missing or invalid token");
+    return false;
+}
+```
 
 ## CI
 
@@ -104,7 +132,7 @@ the firmware bundle and the Flatpak bundle.
 
 | File | Generator |
 | --- | --- |
-| `lib/clockcore/src/TzTable.cpp` | `scripts/gen_tz_table.py` (menu time zones from the system tz database) |
-| `test/fixtures/png_fixtures.h` | `test/fixtures/gen_png_fixtures.py` |
+| `lib/clockcore/src/clockcore/TzTable.cpp` | `scripts/gen_tz_table.py` (menu time zones from the system tz database) |
+| `test/fixtures/png_fixtures.hpp` | `test/fixtures/gen_png_fixtures.py` |
 | `packaging/flatpak/python3-esptool.json` | `scripts/gen_flatpak_python_deps.py` |
 | `data/*.png` | `scripts/convert_legacy_faces.py` (one-off, from the EleksTubeHAX BMP faces) |

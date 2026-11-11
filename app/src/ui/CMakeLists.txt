@@ -17,15 +17,15 @@ qt_add_qml_module(tubeclock
   # Qt and KDE are shared libraries here; the static plugin import scan only warns.
   NO_IMPORT_SCAN
   SOURCES
-    AppSettings.cpp AppSettings.h
-    ClockListModel.cpp ClockListModel.h
-    ConfigForm.cpp ConfigForm.h
-    DeviceController.cpp DeviceController.h
-    FlashController.cpp FlashController.h
-    HostResolver.cpp HostResolver.h
-    ImageSetModel.cpp ImageSetModel.h
-    SerialPorts.cpp SerialPorts.h
-    TokenStore.cpp TokenStore.h
+    AppSettings.cpp AppSettings.hpp
+    ClockListModel.cpp ClockListModel.hpp
+    ConfigForm.cpp ConfigForm.hpp
+    DeviceController.cpp DeviceController.hpp
+    FlashController.cpp FlashController.hpp
+    HostResolver.cpp HostResolver.hpp
+    ImageSetModel.cpp ImageSetModel.hpp
+    SerialPorts.cpp SerialPorts.hpp
+    TokenStore.cpp TokenStore.hpp
   QML_FILES
     qml/Main.qml
     qml/DisclaimerPage.qml

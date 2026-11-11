@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: GPL-3.0-or-later
-"""Regenerates test/fixtures/png_fixtures.h (small PNGs as C arrays) with Pillow."""
+"""Regenerates test/fixtures/png_fixtures.hpp (small PNGs as C arrays) with Pillow."""
 import io
 import pathlib
 
 from PIL import Image
 
-OUT = pathlib.Path(__file__).with_name("png_fixtures.h")
+OUT = pathlib.Path(__file__).with_name("png_fixtures.hpp")
 
 
 def png_bytes(img: Image.Image) -> bytes:

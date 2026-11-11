@@ -14,8 +14,8 @@ app/3rdparty/
 lib/modified_TFT_eSPI/Fonts/
 
 # Generated sources
-lib/clockcore/src/TzTable.cpp
-test/fixtures/png_fixtures.h
+lib/clockcore/src/clockcore/TzTable.cpp
+test/fixtures/png_fixtures.hpp
 
 # Clock face artwork and documentation media
 assets/

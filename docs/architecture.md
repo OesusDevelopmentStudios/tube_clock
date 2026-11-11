@@ -16,7 +16,7 @@
 
 ## Firmware
 
-- **`lib/clockcore`**: everything that does not need hardware. It is unit tested on the PC (`pio test -e native`),
+- **`lib/clockcore`** (`src/clockcore/`): everything that does not need hardware. It is unit tested on the PC (`pio test -e native`),
   and the app compiles parts of it too.
   - `Config`: JSON schema, validation, defaults, POSIX TZ handling (`stripDst`)
   - `Ui`: the button state machine (clock/date, display off, menu, editing, timeout, legend texts). It returns
@@ -31,7 +31,7 @@
   - `TimeKeeper`: the ESP32 system clock in UTC, `TZ` from the config, the RTC chip, and NTP over UDP.
   - `Storage`: LittleFS, the config file, and the image library.
   - `Network`, `ApiServer`: WiFi (DHCP/static/off), mDNS, and the HTTP API.
-  - `main.cpp`: wires it together and owns the state the API uses (`App.h`).
+  - `main.cpp`: wires it together and owns the state the API uses (`App.hpp`).
 - LCD brightness is done in software: the colours are scaled while decoding, because these boards switch the
   displays' power but have no backlight PWM.
 

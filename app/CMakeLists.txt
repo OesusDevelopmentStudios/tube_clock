@@ -40,10 +40,10 @@ add_library(tubeclock_core STATIC
   src/core/SerialDiscovery.cpp
   src/core/TimeZones.cpp
   # shared with the firmware
-  ${CLOCKCORE}/src/Validation.cpp
-  ${CLOCKCORE}/src/ImageSet.cpp
+  ${CLOCKCORE}/src/clockcore/Validation.cpp
+  ${CLOCKCORE}/src/clockcore/ImageSet.cpp
 )
-target_include_directories(tubeclock_core PUBLIC src/core ${CLOCKCORE}/include)
+target_include_directories(tubeclock_core PUBLIC src/core ${CLOCKCORE}/src)
 target_link_libraries(tubeclock_core PUBLIC Qt6::Core Qt6::Gui Qt6::Network Qt6::SerialPort PRIVATE littlefs)
 target_compile_options(tubeclock_core PRIVATE -Wall -Wextra)
 

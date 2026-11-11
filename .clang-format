@@ -1,4 +1,41 @@
-# C/C++ formatting: Mozilla style, 120 columns.
+# C/C++ formatting: Mozilla base with Allman braces, 4-space indent and 120 columns.
 #   clang-format -i <files>   (see docs/building.md)
+# Not covered by clang-format, applied by hand: a blank line after a closing brace that is
+# followed by more statements, and `break;` inside the braces of a braced case block.
 BasedOnStyle: Mozilla
 ColumnLimit: 120
+IndentWidth: 4
+ContinuationIndentWidth: 4
+AccessModifierOffset: -4
+IndentCaseLabels: true
+
+# Braces on their own line (Allman), except after a case label: `case X: {`.
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterCaseLabel: false
+  AfterClass: true
+  AfterControlStatement: Always
+  AfterEnum: true
+  AfterFunction: true
+  AfterNamespace: true
+  AfterStruct: true
+  AfterUnion: true
+  AfterExternBlock: true
+  BeforeCatch: true
+  BeforeElse: true
+  BeforeLambdaBody: false
+  BeforeWhile: false
+  IndentBraces: false
+  SplitEmptyFunction: true
+  SplitEmptyRecord: true
+  SplitEmptyNamespace: true
+InsertBraces: true
+
+# Return type on the same line as the function name; only inline member functions may be one-liners.
+BreakAfterReturnType: Automatic
+AllowShortFunctionsOnASingleLine: InlineOnly
+
+# Long conditions: break before the operator and indent the continuation by one level.
+BreakBeforeBinaryOperators: All
+AlignOperands: DontAlign
+AlignAfterOpenBracket: DontAlign

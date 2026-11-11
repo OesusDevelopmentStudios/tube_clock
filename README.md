@@ -76,7 +76,7 @@ Then connect the clock with a USB cable and choose **Set Up a Clock**. The step-
 ## Repository layout
 
 ```
-src/, include/          firmware (Arduino on ESP32, PlatformIO)
+src/                    firmware (Arduino on ESP32, PlatformIO)
 lib/clockcore/          hardware independent firmware logic, unit tested on the PC
 lib/modified_TFT_eSPI/  display driver (patched copy of TFT_eSPI)
 test/                   firmware unit tests (pio test -e native) and shared fixtures

@@ -34,13 +34,15 @@
   (via `manifest.json`). Changing it breaks existing clocks' image sets and needs a migration plan.
 - `lib/clockcore` must stay free of Arduino/ESP-IDF headers; it is compiled on the PC by the unit tests and partly by
   the app.
-- The config schema lives in two places (`lib/clockcore/src/Config.cpp`, `app/src/core/ClockConfig.cpp`). Change
-  both, plus `docs/config-format.md` and `test/fixtures/config_full.json`.
+- The config schema lives in two places (`lib/clockcore/src/clockcore/Config.cpp`,
+  `app/src/core/ClockConfig.cpp`). Change both, plus `docs/config-format.md` and `test/fixtures/config_full.json`.
 - After changes, verify:
   - firmware: `pio test -e native` and `pio run -e <affected env>` (all four envs if shared code changed)
   - app: `cmake --build build/app && ctest --test-dir build/app`
-- Code style: C/C++ Mozilla style with 120 columns (`clang-format -i`, see `.clang-format`); Python passes
-  `flake8` with 120 columns (`.flake8`). Do not reformat third-party or generated files.
+- Code style: C/C++ follows `.clang-format` (Allman braces, 4-space indent, 120 columns; `clang-format -i`) plus
+  two manual rules: a blank line after a closing `}` followed by more statements, and `break;` inside the braces
+  of a braced case block. Headers are `.hpp`, next to their `.cpp` (see `docs/building.md`, "Code style").
+  Python passes `flake8` with 120 columns (`.flake8`). Do not reformat third-party or generated files.
 - Preserve line endings: LF for all text files, CRLF only for the `*.url` shortcuts in `docs/hardware` (see
   `.gitattributes`).
 - No wholesale reformatting, no unrelated refactors, no renames inside a change request.
@@ -57,9 +59,9 @@
 
 | Path | Content |
 | --- | --- |
-| `src/`, `include/` | Firmware: `main.cpp`, `Display`, `Backlights`, `Buttons`, `ChipSelect`, `TimeKeeper`, `Storage`, `Network`, `ApiServer` |
-| `include/GLOBAL_DEFINES.h` | Pins of the 4 supported clocks; also copied into TFT_eSPI as `User_Setup.h` by `scripts/script_configure_tft_lib.py` |
-| `lib/clockcore/` | Hardware independent logic: config, UI state machine, image set naming, time/NTP, PNG decoding, TZ table |
+| `src/` | Firmware (sources and headers): `main.cpp`, `Display`, `Backlights`, `Buttons`, `ChipSelect`, `TimeKeeper`, `Storage`, `Network`, `ApiServer` |
+| `src/GLOBAL_DEFINES.hpp` | Pins of the 4 supported clocks; also copied into TFT_eSPI as `User_Setup.h` by `scripts/script_configure_tft_lib.py` |
+| `lib/clockcore/` | Hardware independent logic (`src/clockcore/`, included as `"clockcore/X.hpp"`): config, UI state machine, image set naming, time/NTP, PNG decoding, TZ table |
 | `test/` | Unity tests for `pio test -e native`; `test/fixtures` is shared with the app tests |
 | `app/` | Desktop app: `src/core` (tested library), `src/ui` (QML + controllers), `tests`, `3rdparty/littlefs` |
 | `packaging/` | `.desktop`, AppStream metainfo, icon, Flatpak manifest |

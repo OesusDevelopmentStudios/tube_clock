@@ -6,7 +6,7 @@ the clock writes `config.tmp` and renames it over the old file.
 
 If the file is missing or invalid, the clock starts with the defaults: WiFi off, remote access off, UTC.
 
-The parser is in [lib/clockcore/src/Config.cpp](../lib/clockcore/src/Config.cpp) (firmware) and
+The parser is in [lib/clockcore/src/clockcore/Config.cpp](../lib/clockcore/src/clockcore/Config.cpp) (firmware) and
 [app/src/core/ClockConfig.cpp](../app/src/core/ClockConfig.cpp) (app). Both are tested against the same file,
 [test/fixtures/config_full.json](../test/fixtures/config_full.json).
 
